@@ -1,0 +1,41 @@
+// uno.config.ts
+import {
+  defineConfig,
+  presetAttributify,
+  presetIcons,
+  presetTypography,
+  presetUno,
+  presetWebFonts,
+  transformerDirectives,
+  transformerVariantGroup
+} from 'unocss'
+
+export default defineConfig({
+  rules: [
+    [/^m-(\d+)$/, ([_, num]) => ({ margin: `${num}px` })],
+    [/^p-(\d+)$/, ([_, num]) => ({ padding: `${num}px` })]
+  ],
+  shortcuts: [
+    // ...
+  ],
+  theme: {
+    colors: {
+      primary: '#262626',
+      bg: {
+        asPrimary: '#F5F6F5'
+      }
+    }
+  },
+  presets: [
+    presetUno(),
+    presetAttributify(),
+    presetIcons(),
+    presetTypography(),
+    presetWebFonts({
+      fonts: {
+        // ...
+      }
+    })
+  ],
+  transformers: [transformerDirectives(), transformerVariantGroup()]
+})
